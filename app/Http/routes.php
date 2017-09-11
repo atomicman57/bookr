@@ -14,3 +14,14 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+$app->get('/books', 'BooksController@index');
+$app->get('/books/{id:[\d]+}',[
+     'as' => 'books.show',
+     'uses' => 'BooksController@show'
+     ]);
+$app->post('/books', 'BooksController@store');
+$app->put('/books/{id:[\d]+}', 'BooksController@update');
+$app->delete('/books/{id:[\d]+}', 'BooksController@destroy');
+
+
